@@ -1,8 +1,8 @@
 const client = require('../lib/client');
 
-run();
 
-async function run() {
+// eslint-disable-next-line space-before-function-paren
+(async () => {
 
     try {
 
@@ -33,4 +33,5 @@ async function run() {
     finally {
         client.end();
     }
-}
+
+})();

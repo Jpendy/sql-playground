@@ -37,10 +37,10 @@
             "always"
         ],
         "comma-spacing": "error",
-        "space-before-function-paren": [
-            "error",
-            "never"
-        ],
+        // "space-before-function-paren": [
+        //     "error",
+        //     "never"
+        // ],
         "eol-last": [
             "error",
             "always"
