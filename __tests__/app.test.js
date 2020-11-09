@@ -119,4 +119,27 @@ describe('tests routes', () => {
             location: 'Toronto, Canada'
         });
     });
+
+    it('it updates a some columns with PATCH', async () => {
+
+        const team = await Team.create({
+            name: 'Toronto Raptors',
+            location: 'Toronto, Canada'
+        });
+
+        const updatedTeam = await request(app)
+            .patch(`/api/v1/teams/${team.id}`)
+            .send({
+                name: 'yo',
+                location: 'Ice Land of the Snow People'
+            });
+
+        const parsedResponse = JSON.parse(updatedTeam.text);
+
+        expect(parsedResponse).toEqual({
+            id: team.id,
+            name: 'yo',
+            location: 'Ice Land of the Snow People'
+        });
+    });
 });
