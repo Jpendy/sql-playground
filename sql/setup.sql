@@ -13,4 +13,10 @@ CREATE TABLE players (
     position TEXT NOT NULL,
     number INT NOT NULL,
     team INT NOT NULL REFERENCES teams(id)
-)
+);
+
+INSERT INTO teams (name, location)
+VALUES ('Portland Trail Blazers', 'Portland, Oregon');
+
+INSERT INTO teams (name, location)
+VALUES ('Denver Nuggets', 'Denver, Colorado');

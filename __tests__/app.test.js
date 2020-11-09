@@ -1,8 +1,6 @@
 /* eslint-disable space-before-function-paren */
 const { expect, afterAll, it, beforeAll } = require('@jest/globals');
-const { any } = require('expect');
 const fs = require('fs');
-const { parse } = require('path');
 const request = require('supertest');
 const app = require('../lib/app');
 const client = require('../lib/client');
@@ -16,24 +14,12 @@ describe('tests routes', () => {
 
     beforeEach(async () => {
         await client.query(fs.readFileSync('./sql/setup.sql', 'utf-8'));
-
-        await Promise.all([
-            {
-                name: 'Portland Trail Blazers',
-                location: 'Portland, Oregon'
-            },
-            {
-                name: 'Denver Nuggets',
-                location: 'Denver, Colorado'
-            }
-        ].map(item => Team.create(item)));
     });
 
     afterAll(async () => {
         await client.end();
     });
 
-    // eslint-disable-next-line space-before-function-paren
     it('it creates a new team with INSERT', async () => {
 
         const createdTeam = await request(app)
@@ -125,10 +111,9 @@ describe('tests routes', () => {
         const deletedTeam = await request(app)
             .delete(`/api/v1/teams/${team.id}`);
 
-        // const parsedResponse = JSON.parse(deletedTeam.text);
-        const parsedResponse = deletedTeam;
+        const parsedResponse = JSON.parse(deletedTeam.text);
 
-        expect(parsedResponse.text).toEqual({
+        expect(parsedResponse).toEqual({
             id: team.id,
             name: 'Toronto Raptors',
             location: 'Toronto, Canada'
