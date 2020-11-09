@@ -6,6 +6,9 @@
   "directories": {
     "lib": "lib"
   },
+  "jest": {
+    "testEnvironment": "node"
+  },
   "scripts": {
     "test": "jest --verbose --runInBand",
     "test:watch": "npm run test -- --watch",
@@ -35,7 +38,12 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "jest-environment-node": "^26.6.2",
     "nodemon": "^2.0.6",
     "pg": "^8.4.2"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "supertest": "^6.0.1"
   }
 }
