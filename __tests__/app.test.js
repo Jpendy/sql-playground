@@ -39,7 +39,7 @@ describe('tests routes', () => {
     it('it gets all the teams with SELECT *', async () => {
 
         const teams = await request(app)
-            .get('/api/v1/teams');
+            .get('/api/v1/teams')
 
         expect(teams.body).toEqual([
             {
