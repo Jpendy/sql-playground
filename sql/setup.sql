@@ -12,7 +12,7 @@ CREATE TABLE players (
     name TEXT NOT NULL,
     position TEXT NOT NULL,
     number INT NOT NULL,
-    team INT NOT NULL REFERENCES teams(id)
+    team_id INT NOT NULL REFERENCES teams(id)
 );
 
 INSERT INTO teams (name, location)

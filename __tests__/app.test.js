@@ -110,24 +110,24 @@ describe('tests routes', () => {
         });
     });
 
-    it('it updates a some columns with PATCH', async () => {
+    it('it creates a new player with POST', async () => {
 
-        const team = await Team.create({
-            name: 'Toronto Raptors',
-            location: 'Toronto, Canada'
-        });
-
-        const updatedTeam = await request(app)
-            .patch(`/api/v1/teams/${team.id}`)
+        const res = await request(app)
+            .post('/api/v1/players')
             .send({
-                name: 'yo',
-                location: 'Ice Land of the Snow People'
-            });
+                name: 'Damian Lillard',
+                position: 'Point Guard',
+                number: 0,
+                team_id: 1
+            })
 
-        expect(updatedTeam.body).toEqual({
-            id: team.id,
-            name: 'yo',
-            location: 'Ice Land of the Snow People'
-        });
-    });
+        expect(res.body).toEqual({
+            id: '1',
+            name: 'Damian Lillard',
+            position: 'Point Guard',
+            number: 0,
+            team_id: 1
+        })
+
+    })
 });
