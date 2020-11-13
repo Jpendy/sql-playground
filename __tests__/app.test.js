@@ -29,9 +29,7 @@ describe('tests routes', () => {
                 location: 'Dallas Texas'
             });
 
-        const parsedResponse = JSON.parse(createdTeam.text);
-
-        expect(parsedResponse).toEqual({
+        expect(createdTeam.body).toEqual({
             id: '3',
             name: 'Dallas Mavericks',
             location: 'Dallas Texas'
@@ -43,9 +41,7 @@ describe('tests routes', () => {
         const teams = await request(app)
             .get('/api/v1/teams');
 
-        const parsedResponse = JSON.parse(teams.text);
-
-        expect(parsedResponse).toEqual([
+        expect(teams.body).toEqual([
             {
                 id: expect.anything(),
                 name: 'Portland Trail Blazers',
@@ -69,9 +65,7 @@ describe('tests routes', () => {
         const teamRes = await request(app)
             .get(`/api/v1/teams/${team.id}`);
 
-        const parsedResponse = JSON.parse(teamRes.text);
-
-        expect(parsedResponse).toEqual({
+        expect(teamRes.body).toEqual({
             id: team.id,
             name: 'Toronto Raptors',
             location: 'Toronto, Canada'
@@ -92,9 +86,7 @@ describe('tests routes', () => {
                 location: 'Toronto, Maple Syrup Land'
             });
 
-        const parsedResponse = JSON.parse(updatedTeam.text);
-
-        expect(parsedResponse).toEqual({
+        expect(updatedTeam.body).toEqual({
             id: team.id,
             name: 'Toronto Raptors',
             location: 'Toronto, Maple Syrup Land'
@@ -111,9 +103,7 @@ describe('tests routes', () => {
         const deletedTeam = await request(app)
             .delete(`/api/v1/teams/${team.id}`);
 
-        const parsedResponse = JSON.parse(deletedTeam.text);
-
-        expect(parsedResponse).toEqual({
+        expect(deletedTeam.body).toEqual({
             id: team.id,
             name: 'Toronto Raptors',
             location: 'Toronto, Canada'
@@ -134,9 +124,7 @@ describe('tests routes', () => {
                 location: 'Ice Land of the Snow People'
             });
 
-        const parsedResponse = JSON.parse(updatedTeam.text);
-
-        expect(parsedResponse).toEqual({
+        expect(updatedTeam.body).toEqual({
             id: team.id,
             name: 'yo',
             location: 'Ice Land of the Snow People'
