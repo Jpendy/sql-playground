@@ -1,8 +1,14 @@
 {
     "parserOptions": {
         "ecmaVersion": 9,
-        "sourceType": "module"
+        "sourceType": "module",
+        "babelOptions": {
+            "plugins": [
+                "@babel/plugin-syntax-class-properties"
+            ]
+        }
     },
+    "parser": "@babel/eslint-parser",
     "env": {
         "es6": true,
         "node": true,
@@ -37,10 +43,10 @@
             "always"
         ],
         "comma-spacing": "error",
-        "space-before-function-paren": [
-            "error",
-            "never"
-        ],
+        // "space-before-function-paren": [
+        //     "error",
+        //     "never"
+        // ],
         "eol-last": [
             "error",
             "always"
@@ -58,7 +64,7 @@
                         "after": false
                     },
                     "if": {
-                        "after": false
+                        "after": true
                     },
                     "switch": {
                         "after": false
@@ -67,7 +73,7 @@
                         "after": false
                     },
                     "catch": {
-                        "after": false
+                        "after": true
                     }
                 }
             }
